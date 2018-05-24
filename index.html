@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>✅ Checking Checkboxes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="inbox">
+    <div class="item">
+      <input type="checkbox">
+      <p>We need to defend our planet against pollution. Also dark wizards.</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Calculon is gonna kill us and it's all everybody else's fault!</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>So I really am important? How I feel when I'm drunk is correct?</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Shut up and take my money!</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>You guys aren't Santa! You're not even robots.</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>You were doing very well, until everyone died.</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Kif, I have mated with a woman. Inform the men.</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>All I want is to be a monkey of moderate intelligence who wears a suit</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>And remember, don't do anything that affects anything.</p>
+    </div>
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll( '.inbox input[type="checkbox"]' );
+
+    let lastChecked;
+
+    function handleClick( e ) {
+      let inBetween = false;
+
+      if ( e.shiftKey && this.checked ) {
+        checkboxes.forEach( checkbox => {
+          if ( checkbox === this || checkbox === lastChecked ) {
+            inBetween = !inBetween;
+          }
+
+          if ( inBetween ) {
+            checkbox.checked = true;
+          }
+        });
+      }
+
+      lastChecked = this;
+    }
+
+    checkboxes.forEach( checkbox => checkbox.addEventListener( 'click', handleClick ) );
+
+  </script>
+</body>
+
+</html>
